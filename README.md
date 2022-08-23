@@ -1,0 +1,3 @@
+# Estudo de Clear Architecture
+
+...

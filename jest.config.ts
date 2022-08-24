@@ -1,6 +1,6 @@
 export default {
   roots: ['<rootDir>/src'],
-  preset: "ts-jest",
+  preset: 'ts-jest',
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
@@ -8,7 +8,11 @@ export default {
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   testEnvironment: 'node',
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': 'ts-jest'
   },
-  testMatch: ["**/**/*.spec.ts"],
-};
+  testMatch: ['**/**/*.spec.ts'],
+  transformIgnorePatterns: [
+    'node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)',
+    'dist'
+  ]
+}

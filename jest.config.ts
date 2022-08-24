@@ -1,11 +1,11 @@
 export default {
-  roots: ['<rootDir>/src'],
+  roots: ['./src'],
   preset: 'ts-jest',
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  collectCoverageFrom: ['/src/**/*.ts'],
   testEnvironment: 'node',
   transform: {
     '^.+\\.ts$': 'ts-jest'

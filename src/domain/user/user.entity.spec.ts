@@ -1,4 +1,4 @@
-import { UserData } from './user.data';
+import { UserData } from './dto/user.data';
 import { User } from './user.entity';
 import { Password } from './value-objects/password.value-object';
 import { Email } from './value-objects/email.value-object';

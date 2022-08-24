@@ -1,4 +1,4 @@
-import { UserData } from './user.data';
+import { UserData } from './dto/user.data';
 
 export class User {
   public readonly name: string;

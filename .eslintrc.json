@@ -20,7 +20,8 @@
     },
     "rules": {
         "no-console": 1,
-        "prettier/prettier": 2
+        "prettier/prettier": 2,
+        "no-loops/no-loops": 2
     },
     "ignorePatterns": [
         "node_modules/",  
@@ -32,6 +33,7 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "no-loops"
     ]
 }

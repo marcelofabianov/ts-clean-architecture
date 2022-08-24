@@ -15,4 +15,4 @@ export default {
     'node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)',
     'dist'
   ]
-}
+};

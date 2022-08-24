@@ -1,17 +1,26 @@
 {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
     "env": {
         "browser": true,
         "node": true,
         "es2021": true,
         "jest": true
     },
-    "extends": "standard-with-typescript",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
     "overrides": [
     ],
     "parserOptions": {
         "project": "tsconfig.json"
     },
     "rules": {
+        "no-console": 1,
+        "prettier/prettier": 2
     },
     "ignorePatterns": [
         "node_modules/",  
@@ -20,5 +29,9 @@
     ],
     "globals": {  
         "jest": true  
-    }
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ]
 }

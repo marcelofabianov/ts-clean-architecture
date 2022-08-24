@@ -1,11 +1,17 @@
-export const ERROR_INVALID_PASSWORD = {
-  type: 'ERROR_INVALID_PASSWORD',
-  message: 'Invalid password'
-};
+export type PasswordErrorsType = 'INVALID_PASSWORD' | 'EMPTY_PASSWORD';
 
-export const ERROR_EMPTY_PASSWORD = {
-  type: 'ERROR_EMPTY_PASSWORD',
-  message: 'Empty password'
+export const PasswordErrors = async (
+  error: PasswordErrorsType
+): Promise<string> => {
+  switch (error) {
+    case 'EMPTY_PASSWORD': {
+      return 'Empty password';
+    }
+    case 'INVALID_PASSWORD': {
+      return 'Invalid password';
+    }
+    default: {
+      throw new Error('Invalid password');
+    }
+  }
 };
-
-export type PasswordErrors = 'ERROR_INVALID_PASSWORD' | 'ERROR_EMPTY_PASSWORD';

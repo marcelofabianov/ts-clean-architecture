@@ -12,5 +12,13 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+    },
+    "ignorePatterns": [
+        "node_modules/",  
+        "dist/",
+        "coverage/"
+    ],
+    "globals": {  
+        "jest": true  
     }
 }

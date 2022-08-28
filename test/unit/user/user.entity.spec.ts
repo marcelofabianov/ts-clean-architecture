@@ -1,5 +1,5 @@
-import User from '../../src/domain/entities/user/user.entity';
-import { userType } from '../../src/domain/entities/user/type/user.type';
+import User from '../../../src/domain/entities/user/user.entity';
+import { userType } from '../../../src/domain/entities/user/type/user.type';
 
 describe('Domain/Entities/User', function () {
   it('Deve ser criado um usuario valido', function () {

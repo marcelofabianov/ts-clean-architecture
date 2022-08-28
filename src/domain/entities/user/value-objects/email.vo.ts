@@ -8,4 +8,8 @@ export default class Email {
   static create(email: string): string {
     return new Email(email).value;
   }
+
+  static validate(email: string): boolean {
+    return false;
+  }
 }

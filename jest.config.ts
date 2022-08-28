@@ -1,5 +1,5 @@
 export default {
-  roots: ['./src'],
+  roots: ['.'],
   preset: 'ts-jest',
   clearMocks: true,
   collectCoverage: false,

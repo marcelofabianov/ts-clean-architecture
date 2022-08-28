@@ -7,7 +7,7 @@ Proposta inicial de organização
 │   ├── domain
 │   │   ├── users
 │   │   |   ├── data
-│   │   |   |   ├── user.data.ts
+│   │   |   |   ├── user.type.ts
 │   │   |   ├── dto
 │   │   |   |   ├── create-user.dto.ts
 │   │   |   |   ├── update-user.dto.ts

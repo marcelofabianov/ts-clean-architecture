@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsc -w",
     "test": "jest --config jest.config.ts",
+    "test-coverage": "jest --config jest.config.ts --coverage",
     "test-watch": "jest --watch --config jest.config.ts",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",

@@ -16,4 +16,7 @@ describe('Domain/Entities/User', function () {
     expect(user.password).toBe(userData.password);
     expect(Boolean(user.id)).toBe(true);
   });
+  // não deve ser criado um usuário com email invalido
+  // não deve ser criado um usuário com password invalido
+  // não deve ser criado um usuário com email de outro usuário
 });

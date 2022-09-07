@@ -1,4 +1,4 @@
-# Estudo de Clear Architecture
+# Clean Architecture
 
 Proposta inicial de organização
 

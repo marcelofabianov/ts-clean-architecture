@@ -14,9 +14,11 @@ Proposta inicial de organização
 │   │   |   |   ├── http-server.adapter-interface.ts
 │   │   |   |   ├── express.adapter.ts
 │   │   ├── value-objects
+│   │   |   ├── author.vo.ts
 │   │   |   ├── created-at.vo.ts
+│   │   |   ├── deleted-at.vo.ts
+│   │   |   ├── id.vo.ts
 │   │   |   ├── updated-at.vo.ts
-│   │   |   ├── id-at.vo.ts
 │   ├── users
 │   │   ├── adapters
 │   │   |   ├── http

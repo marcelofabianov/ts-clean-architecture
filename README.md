@@ -42,4 +42,8 @@ Proposta inicial de organização
 │   │   |   |   |   ├── create-user.dto-output.ts
 │   │   |   |   |   ├── create-user.use-case.ts
 │   │   |   |   |   ├── create-user.use-case-interface.ts
+├── test
+│   ├── integration
+│   ├── unit
+│   ├── features
 ```

@@ -6,6 +6,8 @@ Proposta inicial de organização
 ├── main.ts
 ├── src
 │   ├── shared
+│   │   ├── errors
+│   │   |   ├── either.error-handling.ts
 │   │   ├── adapters
 │   │   |   ├── database
 │   │   |   |   ├── database.adapter-interface.ts

@@ -47,3 +47,11 @@ Proposta inicial de organização
 │   ├── unit
 │   ├── features
 ```
+
+Fonts
+- [Flexible Error Handling w/ the Result Class | Enterprise Node.js + TypeScript](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/)
+- [Functional Error Handling with Express.js and DDD | Enterprise Node.js + TypeScript](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/functional-error-handling/)
+- [Better Software Design with Application Layer Use Cases | Enterprise Node.js + TypeScript](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/)
+- [Expressive error handling in TypeScript and benefits for domain-driven design](https://medium.com/inato/expressive-error-handling-in-typescript-and-benefits-for-domain-driven-design-70726e061c86)
+- [Youtube Canal Rodrigo Branas](https://www.youtube.com/c/RodrigoBranas)
+- [Youtube Canal Otavio Lemos](https://www.youtube.com/user/OtavioALLemos)

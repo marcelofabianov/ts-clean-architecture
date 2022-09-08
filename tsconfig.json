@@ -1,13 +1,27 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "rootDir": "./",
-        "baseUrl": "./src",
-        "outDir": "./dist",
-        "sourceMap": true,
+        "target": "es2017",
+        "module": "es2017",
         "strict": true,
-        "module": "commonjs",
         "esModuleInterop": true,
         "strictNullChecks":  true,
+        "sourceMap": true,
+        "rootDir": ".",
+        "baseUrl": "src",
+        "outDir": "dist",
+        "types": ["node", "jest"],
+        "typeRoots" : ["./node_modules/@types", "./src/@types"],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "inlineSourceMap": true,
+        "pretty": true,
+        "paths": {
+            "@/*": ["*"]
+        },
+        "exclude": [
+            "node_modules",
+            "!node_modules/@types",
+            "./dist"
+        ]
     }
 }

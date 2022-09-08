@@ -32,12 +32,19 @@ Proposta inicial de organização
 │   │   |   |   ├── user.repository.ts
 │   │   ├── domain
 │   │   |   ├── entities
+│   │   |   |   ├── errors
+│   │   |   |   |   ├── email
+│   │   |   |   |   |   ├──  invalid-email-format.error.ts
+│   │   |   |   |   ├── password
+│   │   |   |   |   |   ├──  min-password.error.ts
 │   │   |   |   ├── value-objects
 │   │   |   |   |   ├── email.vo.ts
 │   │   |   |   |   ├── password.vo.ts
 │   │   |   |   ├── user.entity.ts
 │   │   |   ├── use-cases
 │   │   |   |   ├── create-user
+│   │   |   |   |   ├── errors
+│   │   |   |   |   |   ├── unique-email.error.ts
 │   │   |   |   |   ├── ports
 │   │   |   |   |   |   ├── user.repository-interface.ts
 │   │   |   |   |   ├── create-user.dto-input.ts
@@ -50,7 +57,7 @@ Proposta inicial de organização
 │   ├── features
 ```
 
-Fontes
+Fontes de estudo
 
 - [Artigo: Flexible Error Handling w/ the Result Class | Enterprise Node.js + TypeScript](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/)
 - [Artigo: Functional Error Handling with Express.js and DDD | Enterprise Node.js + TypeScript](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/functional-error-handling/)

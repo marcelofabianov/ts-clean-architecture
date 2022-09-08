@@ -18,6 +18,8 @@ Proposta inicial de organização
 │   │   |   ├── http
 │   │   |   |   ├── http-server.adapter-interface.ts
 │   │   |   |   ├── express.adapter.ts
+│   │   ├── tracker
+│   │   |   ├── index.ts
 │   │   ├── value-objects
 │   │   |   ├── author.vo.ts
 │   │   |   ├── created-at.vo.ts

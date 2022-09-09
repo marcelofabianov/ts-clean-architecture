@@ -5,9 +5,9 @@ import {
   UpdatedAt
 } from '@/shared/value-objects/control-dates.vo';
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
-import { InMemoryDatabase } from '@certificates/infra/repositories/in-memory.database';
 import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
 import { Id } from '@/shared/value-objects/id.vo';
+import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adapter';
 
 test('Deve salvar o registro de certificado', async function () {
   const dto: CreateCertificateDto = {
@@ -19,7 +19,7 @@ test('Deve salvar o registro de certificado', async function () {
   };
 
   const certificate = new Certificate(dto);
-  const database = new InMemoryDatabase();
+  const database = new InMemoryDatabaseAdapter<Certificate>();
   const repository = new CertificateRepository(database);
 
   repository.fill(certificate);
@@ -30,7 +30,7 @@ test('Deve salvar o registro de certificado', async function () {
 });
 
 test('Deve recuperar o registro do certificado pelo ID informado', async function () {
-  const database = new InMemoryDatabase();
+  const database = new InMemoryDatabaseAdapter<Certificate>();
   const id = (
     await database.save(
       new Certificate({
@@ -51,7 +51,7 @@ test('Deve recuperar o registro do certificado pelo ID informado', async functio
 });
 
 test('Deve remover o registro do certificado pelo seu ID', async function () {
-  const database = new InMemoryDatabase();
+  const database = new InMemoryDatabaseAdapter<Certificate>();
   const id = (
     await database.save(
       new Certificate({
@@ -74,7 +74,7 @@ test('Deve remover o registro do certificado pelo seu ID', async function () {
 });
 
 test('Deve atualizar os dados do certificado', async function () {
-  const database = new InMemoryDatabase();
+  const database = new InMemoryDatabaseAdapter<Certificate>();
   const id = (
     await database.save(
       new Certificate({

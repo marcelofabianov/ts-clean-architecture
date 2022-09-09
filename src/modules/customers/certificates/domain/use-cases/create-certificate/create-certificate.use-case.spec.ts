@@ -5,9 +5,9 @@ import {
 } from '@/shared/value-objects/control-dates.vo';
 import { CreateCertificateDto } from '@certificates/domain/dtos/create-certificate.dto';
 import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
-import { InMemoryDatabase } from '@certificates/infra/repositories/in-memory.database';
 import { CreateCertificateUseCase } from '@certificates/domain/use-cases/create-certificate/create-certificate.use-case';
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
+import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adapter';
 
 test('Deve criar um novo certificado', async function () {
   const dto: CreateCertificateDto = {
@@ -18,7 +18,9 @@ test('Deve criar um novo certificado', async function () {
     expiresIn: new Date()
   };
 
-  const repository = new CertificateRepository(new InMemoryDatabase());
+  const repository = new CertificateRepository(
+    new InMemoryDatabaseAdapter<Certificate>()
+  );
   const useCase = new CreateCertificateUseCase(repository);
 
   const certificate = await useCase.execute(dto);

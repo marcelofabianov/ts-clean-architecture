@@ -1,4 +1,3 @@
-import { InMemoryDatabase } from '@certificates/infra/repositories/in-memory.database';
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
 import {
   CreatedAt,
@@ -7,9 +6,10 @@ import {
 } from '@/shared/value-objects/control-dates.vo';
 import { GetCertificateUseCase } from '@certificates/domain/use-cases/get-certificate/get-certificate.use-case';
 import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
+import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adapter';
 
 test('Deve obter registro do certificado pelo ID', async function () {
-  const database = new InMemoryDatabase();
+  const database = new InMemoryDatabaseAdapter<Certificate>();
   const id = (
     await database.save(
       new Certificate({

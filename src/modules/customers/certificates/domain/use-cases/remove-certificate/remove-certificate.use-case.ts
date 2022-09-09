@@ -4,9 +4,7 @@ import { IRemoveCertificateRepository } from '@certificates/domain/use-cases/rem
 export class RemoveCertificateUseCase implements IUseCase<string, boolean> {
   constructor(private readonly repository: IRemoveCertificateRepository) {}
 
-  async execute(id: string): Promise<boolean> {
-    const certificate = await this.repository.findById(id);
-    this.repository.fill(certificate);
-    return await this.repository.delete();
+  execute(id: string): Promise<boolean> {
+    return this.repository.delete(id);
   }
 }

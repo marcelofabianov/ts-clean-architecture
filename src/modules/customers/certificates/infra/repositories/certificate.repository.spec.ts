@@ -1,6 +1,6 @@
 import { CreateCertificateDto } from '@certificates/domain/dtos/create-certificate.dto';
 import { CreatedAt, UpdatedAt } from '@/shared/value-objects/control-dates.vo';
-import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adapter';
+import { InMemoryDatabaseAdapter } from '@/core/infra/adapters/in-memory-database.adapter';
 import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
 import exp from 'constants';

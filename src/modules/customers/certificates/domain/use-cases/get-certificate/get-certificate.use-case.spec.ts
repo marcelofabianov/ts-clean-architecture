@@ -13,11 +13,10 @@ test('Deve obter registro do certificado pelo ID', async function () {
   const id = (
     await database.save(
       new Certificate({
-        createdAt: CreatedAt.create(),
-        updatedAt: UpdatedAt.create(),
-        deletedAt: DeletedAt.create(),
-        password: 'password',
-        expiresIn: new Date()
+        _createdAt: CreatedAt.create(),
+        _updatedAt: UpdatedAt.create(),
+        _password: 'password',
+        _expiresIn: new Date()
       })
     )
   ).id;

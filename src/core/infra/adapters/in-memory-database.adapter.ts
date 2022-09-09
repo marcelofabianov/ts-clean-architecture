@@ -1,4 +1,4 @@
-import { IDatabaseAdapter } from '@/core/adapters/database.interface';
+import { IDatabaseAdapter } from '@/core/infra/adapters/database.interface';
 
 interface entity {
   id: string;

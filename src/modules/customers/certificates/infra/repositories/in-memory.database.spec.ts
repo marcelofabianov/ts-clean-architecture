@@ -54,11 +54,9 @@ test('Deve remover da memória o registro de certificado', async function () {
     })
   );
 
-  console.log('Certificate: ', certificate.id);
-
   const response = await database.delete(certificate);
-
-  console.log('Spec Deleted: ', await database.list());
+  const count = (await database.list()).length;
 
   expect(response).toBe(true);
+  expect(count === 0).toBeTruthy();
 });

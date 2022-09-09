@@ -29,7 +29,7 @@ export class InMemoryDatabase implements IDatabaseAdapter<Certificate> {
   }
 
   delete(certificate: Certificate): Promise<boolean> {
-    this.database.filter((cert) => cert.id !== certificate.id);
+    this.database = this.database.filter((cert) => cert.id !== certificate.id);
     return Promise.resolve(true);
   }
 

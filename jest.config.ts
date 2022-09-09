@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 export default {
   roots: ['.'],
   preset: 'ts-jest',
@@ -14,5 +16,9 @@ export default {
   transformIgnorePatterns: [
     'node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)',
     'dist'
-  ]
+  ],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@certificates/(.*)$': '<rootDir>/src/modules/customers/certificates/$1'
+  }
 };

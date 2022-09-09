@@ -1,107 +1,93 @@
 import { CreateCertificateDto } from '@certificates/domain/dtos/create-certificate.dto';
-import {
-  CreatedAt,
-  DeletedAt,
-  UpdatedAt
-} from '@/shared/value-objects/control-dates.vo';
-import { Certificate } from '@certificates/domain/entities/certificate.entity';
-import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
-import { Id } from '@/shared/value-objects/id.vo';
+import { CreatedAt, UpdatedAt } from '@/shared/value-objects/control-dates.vo';
 import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adapter';
+import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
+import { Certificate } from '@certificates/domain/entities/certificate.entity';
+import exp from 'constants';
 
-test('Deve salvar o registro de certificado', async function () {
+test('Deve salvar um novo registro do certificado', async function () {
   const dto: CreateCertificateDto = {
-    createdAt: CreatedAt.create(),
-    updatedAt: UpdatedAt.create(),
-    deletedAt: DeletedAt.create(),
-    password: 'password',
-    expiresIn: new Date()
+    _createdAt: CreatedAt.create(),
+    _updatedAt: UpdatedAt.create(),
+    _password: 'password',
+    _expiresIn: new Date()
   };
 
-  const certificate = new Certificate(dto);
-  const database = new InMemoryDatabaseAdapter<Certificate>();
-  const repository = new CertificateRepository(database);
+  const repository = new CertificateRepository(
+    new InMemoryDatabaseAdapter<Certificate>()
+  );
 
-  repository.fill(certificate);
+  repository.fill(new Certificate(dto));
+
   const response = await repository.save();
 
-  expect(response).toBeInstanceOf(Certificate);
-  expect(response.expiresIn === dto.expiresIn).toBeTruthy();
+  expect(response).toBeTruthy();
+  expect(response.expiresIn).toBe(dto._expiresIn);
 });
 
-test('Deve recuperar o registro do certificado pelo ID informado', async function () {
-  const database = new InMemoryDatabaseAdapter<Certificate>();
-  const id = (
-    await database.save(
-      new Certificate({
-        createdAt: CreatedAt.create(),
-        updatedAt: UpdatedAt.create(),
-        deletedAt: DeletedAt.create(),
-        password: 'password',
-        expiresIn: new Date()
-      })
-    )
-  ).id;
+test('Deve buscar o registro de certificado pelo ID', async function () {
+  const repository = new CertificateRepository(
+    new InMemoryDatabaseAdapter<Certificate>()
+  );
+  repository.fill(
+    new Certificate({
+      _createdAt: CreatedAt.create(),
+      _updatedAt: UpdatedAt.create(),
+      _password: 'my-password',
+      _expiresIn: new Date()
+    })
+  );
+  const id = (await repository.save()).id;
 
-  const repository = new CertificateRepository(database);
-  const response = await repository.findById(id);
-
-  expect(response).toBeInstanceOf(Certificate);
-  expect(response.id === id).toBeTruthy();
-});
-
-test('Deve remover o registro do certificado pelo seu ID', async function () {
-  const database = new InMemoryDatabaseAdapter<Certificate>();
-  const id = (
-    await database.save(
-      new Certificate({
-        createdAt: CreatedAt.create(),
-        updatedAt: UpdatedAt.create(),
-        deletedAt: DeletedAt.create(),
-        password: 'password',
-        expiresIn: new Date()
-      })
-    )
-  ).id;
-
-  const repository = new CertificateRepository(database);
   const certificate = await repository.findById(id);
-  repository.fill(certificate);
 
-  const response = await repository.delete();
+  expect(certificate.id).toBe(id);
+  expect(certificate.password).toBe('my-password');
+});
+
+test('Deve excluir o registro de certificado', async function () {
+  const repository = new CertificateRepository(
+    new InMemoryDatabaseAdapter<Certificate>()
+  );
+  repository.fill(
+    new Certificate({
+      _createdAt: CreatedAt.create(),
+      _updatedAt: UpdatedAt.create(),
+      _password: 'my-password',
+      _expiresIn: new Date()
+    })
+  );
+  const id = (await repository.save()).id;
+  const response = await repository.delete(id);
 
   expect(response).toBe(true);
 });
 
-test('Deve atualizar os dados do certificado', async function () {
-  const database = new InMemoryDatabaseAdapter<Certificate>();
-  const id = (
-    await database.save(
-      new Certificate({
-        createdAt: CreatedAt.create(),
-        updatedAt: UpdatedAt.create(),
-        deletedAt: DeletedAt.create(),
-        password: 'password',
-        expiresIn: new Date()
-      })
-    )
-  ).id;
-  const certificate = new Certificate(
-    {
-      createdAt: CreatedAt.create(),
-      updatedAt: UpdatedAt.create(),
-      deletedAt: DeletedAt.create(),
-      password: 'my-password',
-      expiresIn: new Date()
-    },
-    Id.create(id)
+test('Deve listar os registros de certificados', async function () {
+  const repository = new CertificateRepository(
+    new InMemoryDatabaseAdapter<Certificate>()
   );
+  repository.fill(
+    new Certificate({
+      _createdAt: CreatedAt.create(),
+      _updatedAt: UpdatedAt.create(),
+      _password: 'my-password',
+      _expiresIn: new Date()
+    })
+  );
+  await repository.save();
 
-  const repository = new CertificateRepository(database);
-  repository.fill(certificate);
+  repository.fill(
+    new Certificate({
+      _createdAt: CreatedAt.create(),
+      _updatedAt: UpdatedAt.create(),
+      _password: 'my-password',
+      _expiresIn: new Date()
+    })
+  );
+  await repository.save();
 
-  const response = await repository.update(id);
+  const certificates = await repository.list();
 
-  expect(response.id).toBe(id);
-  expect(response.password).toBe('my-password');
+  expect(certificates.length).toBe(2);
 });

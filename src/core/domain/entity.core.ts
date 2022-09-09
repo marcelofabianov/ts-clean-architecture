@@ -9,21 +9,21 @@ export interface IEntity {
   _id?: Id;
   _createdAt: CreatedAt;
   _updatedAt: UpdatedAt;
-  _deletedAt?: DeletedAt;
+  _deletedAt?: DeletedAt | null;
 }
 
 export class Entity<T extends IEntity> {
   private readonly _createdAt: CreatedAt;
   private _id?: Id;
   private _updatedAt: UpdatedAt;
-  private readonly _deletedAt?: DeletedAt;
+  private readonly _deletedAt?: DeletedAt | null;
 
   constructor(data: T) {
     const { _id, _createdAt, _updatedAt, _deletedAt } = data;
-    this._id = _id;
+    this._id = _id ?? Id.create();
     this._createdAt = _createdAt;
     this._updatedAt = _updatedAt;
-    this._deletedAt = _deletedAt;
+    this._deletedAt = _deletedAt ?? null;
   }
 
   get id(): string {

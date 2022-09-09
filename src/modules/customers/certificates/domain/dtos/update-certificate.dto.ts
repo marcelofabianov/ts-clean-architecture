@@ -1,7 +1,8 @@
-import { UpdatedAt } from '@/shared/value-objects/control-dates.vo';
+import { CreatedAt, UpdatedAt } from '@/shared/value-objects/control-dates.vo';
 
-export interface CreateCertificateDto {
-  updatedAt: UpdatedAt;
-  password: string;
-  expiresIn: Date;
+export interface UpdateCertificateDto {
+  _createdAt: CreatedAt;
+  _updatedAt: UpdatedAt;
+  _password: string;
+  _expiresIn: Date;
 }

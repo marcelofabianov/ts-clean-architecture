@@ -7,7 +7,7 @@ import {
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
 import { InMemoryDatabase } from '@certificates/infra/repositories/in-memory.database';
 
-test('Deve salvar na memória um novo certificado', async function () {
+test('Deve salvar na memória um novo registro de certificado', async function () {
   const dto: CreateCertificateDto = {
     createdAt: CreatedAt.create(),
     updatedAt: UpdatedAt.create(),
@@ -24,7 +24,7 @@ test('Deve salvar na memória um novo certificado', async function () {
   expect(response.id).toBeTruthy();
 });
 
-test('Deve recuperar o registro de certificado informando um ID', async function () {
+test('Deve recuperar da memória o registro de certificado informando um ID', async function () {
   const database = new InMemoryDatabase();
   const certificate = await database.save(
     new Certificate({

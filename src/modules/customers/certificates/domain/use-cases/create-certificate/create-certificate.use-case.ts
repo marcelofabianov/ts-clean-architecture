@@ -1,7 +1,7 @@
 import { IUseCase } from '@/core/domain/use-case.core';
-import { ICreateCertificateRepository } from '@certificates/use-cases/create-certificate/create-certificate.repository';
-import { CreateCertificateDto } from '@certificates/dtos/create-certificate.dto';
-import { Certificate } from '@certificates/domain/certificate.entity';
+import { ICreateCertificateRepository } from '@certificates/domain/use-cases/create-certificate/create-certificate.repository';
+import { CreateCertificateDto } from '@certificates/domain/dtos/create-certificate.dto';
+import { Certificate } from '@certificates/domain/entities/certificate.entity';
 
 export class CreateCertificateUseCase
   implements IUseCase<CreateCertificateDto, Certificate>

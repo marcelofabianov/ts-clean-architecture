@@ -41,3 +41,24 @@ test('Deve recuperar da memória o registro de certificado informando um ID', as
   expect(response).toBeInstanceOf(Certificate);
   expect(response.id === certificate.id).toBeTruthy();
 });
+
+test('Deve remover da memória o registro de certificado', async function () {
+  const database = new InMemoryDatabase();
+  const certificate = await database.save(
+    new Certificate({
+      createdAt: CreatedAt.create(),
+      updatedAt: UpdatedAt.create(),
+      deletedAt: DeletedAt.create(),
+      password: 'password',
+      expiresIn: new Date()
+    })
+  );
+
+  console.log('Certificate: ', certificate.id);
+
+  const response = await database.delete(certificate);
+
+  console.log('Spec Deleted: ', await database.list());
+
+  expect(response).toBe(true);
+});

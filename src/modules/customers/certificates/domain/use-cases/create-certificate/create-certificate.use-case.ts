@@ -8,7 +8,7 @@ export class CreateCertificateUseCase
 {
   constructor(private readonly repository: ICreateCertificateRepository) {}
 
-  execute(dto: CreateCertificateDto): Promise<Certificate> | Certificate {
+  execute(dto: CreateCertificateDto): Promise<Certificate> {
     this.repository.fill(new Certificate(dto));
     return this.repository.save();
   }

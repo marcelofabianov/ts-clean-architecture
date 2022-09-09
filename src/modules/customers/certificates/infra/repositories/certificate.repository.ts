@@ -46,8 +46,14 @@ export class CertificateRepository
     return this.database.list();
   }
 
-  factory(quantity = 1): Promise<Certificate[]> | Promise<Certificate> {
+  factory(quantity = 1): Certificate[] {
+    const data: Certificate[] = [];
     const factory = new CertificateFactory(quantity).create();
-    factory.map((certificate) => this.database.save(certificate));
+
+    factory.map(async (certificate) => {
+      data.push(await this.database.save(certificate));
+    });
+
+    return data;
   }
 }

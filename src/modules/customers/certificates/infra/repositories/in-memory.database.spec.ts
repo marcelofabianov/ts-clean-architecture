@@ -6,6 +6,7 @@ import {
 } from '@/shared/value-objects/control-dates.vo';
 import { Certificate } from '@certificates/domain/entities/certificate.entity';
 import { InMemoryDatabase } from '@certificates/infra/repositories/in-memory.database';
+import { Id } from '@/shared/value-objects/id.vo';
 
 test('Deve salvar na memória um novo registro de certificado', async function () {
   const dto: CreateCertificateDto = {
@@ -54,9 +55,38 @@ test('Deve remover da memória o registro de certificado', async function () {
     })
   );
 
-  const response = await database.delete(certificate);
+  const response = await database.delete(certificate.id);
   const count = (await database.list()).length;
 
   expect(response).toBe(true);
   expect(count === 0).toBeTruthy();
+});
+
+test('Deve atualizar os dados do registro em memória do certificado', async function () {
+  const database = new InMemoryDatabase();
+  const id = (
+    await database.save(
+      new Certificate({
+        createdAt: CreatedAt.create(),
+        updatedAt: UpdatedAt.create(),
+        deletedAt: DeletedAt.create(),
+        password: 'password',
+        expiresIn: new Date()
+      })
+    )
+  ).id;
+
+  const data = {
+    createdAt: CreatedAt.create(),
+    updatedAt: UpdatedAt.create(),
+    deletedAt: DeletedAt.create(),
+    password: 'my-password',
+    expiresIn: new Date()
+  };
+
+  const certificate = new Certificate(data, Id.create(id));
+  const response = await database.update(id, certificate);
+
+  expect(response.id).toBe(id);
+  expect(response.password).toBe(data.password);
 });

@@ -1,9 +1,5 @@
-import { Entity, IEntity } from '@/core/domain/entity.core';
-
-export interface CertificateData extends IEntity {
-  password: string;
-  expiresIn: Date;
-}
+import { Entity } from '@/core/domain/entity.core';
+import { CertificateData } from '@certificates/domain/entities/certificate.data';
 
 export class Certificate extends Entity<CertificateData> {
   private _password: string;

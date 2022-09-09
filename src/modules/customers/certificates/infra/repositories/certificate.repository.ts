@@ -2,8 +2,8 @@ import { ICreateCertificateRepository } from '@certificates/domain/use-cases/cre
 import { IDatabaseAdapter } from '@/core/adapters/database.interface';
 import { IGetCertificateRepository } from '@certificates/domain/use-cases/get-certificate/get-certificate.repository';
 import { IRemoveCertificateRepository } from '@certificates/domain/use-cases/remove-certificate/remove-certificate.repository';
-import { Certificate } from '@certificates/domain/entities/certificate.entity';
 import { IUpdateCertificateRepository } from '@certificates/domain/use-cases/update-certificate/update-certificate.repository';
+import { Certificate } from '@certificates/domain/entities/certificate.entity';
 
 export class CertificateRepository
   implements

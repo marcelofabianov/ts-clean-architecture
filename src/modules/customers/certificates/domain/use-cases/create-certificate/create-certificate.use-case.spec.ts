@@ -11,20 +11,19 @@ import { InMemoryDatabaseAdapter } from '@/core/adapters/in-memory-database.adap
 
 test('Deve criar um novo certificado', async function () {
   const dto: CreateCertificateDto = {
-    createdAt: CreatedAt.create(),
-    updatedAt: UpdatedAt.create(),
-    deletedAt: DeletedAt.create(),
-    password: 'password',
-    expiresIn: new Date()
+    _createdAt: CreatedAt.create(),
+    _updatedAt: UpdatedAt.create(),
+    _password: 'password',
+    _expiresIn: new Date()
   };
 
   const repository = new CertificateRepository(
     new InMemoryDatabaseAdapter<Certificate>()
   );
-  const useCase = new CreateCertificateUseCase(repository);
 
+  const useCase = new CreateCertificateUseCase(repository);
   const certificate = await useCase.execute(dto);
 
   expect(certificate).toBeInstanceOf(Certificate);
-  expect(certificate.expiresIn === dto.expiresIn).toBeTruthy();
+  expect(certificate.expiresIn === dto._expiresIn).toBeTruthy();
 });

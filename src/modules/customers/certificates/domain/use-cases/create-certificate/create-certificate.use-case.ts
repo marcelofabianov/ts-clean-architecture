@@ -9,7 +9,10 @@ export class CreateCertificateUseCase
   constructor(private readonly repository: ICreateCertificateRepository) {}
 
   execute(dto: CreateCertificateDto): Promise<Certificate> {
-    this.repository.fill(new Certificate(dto));
+    const { _password, _expiresIn, _createdAt, _updatedAt } = dto;
+    this.repository.fill(
+      new Certificate({ _expiresIn, _password, _createdAt, _updatedAt })
+    );
     return this.repository.save();
   }
 }

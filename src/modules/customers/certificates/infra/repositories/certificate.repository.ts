@@ -51,8 +51,11 @@ export class CertificateRepository
     const factory = new CertificateFactory(quantity).create();
 
     factory.map(async (certificate) => {
-      data.push(await this.database.save(certificate));
+      const cert = await this.database.save(certificate);
+      data.push(cert);
     });
+
+    console.log('certificates: ', data);
 
     return data;
   }

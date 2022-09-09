@@ -1,4 +1,3 @@
-import { CertificateFactory } from '@certificates/infra/factories/certificate.factory';
 import { CertificateRepository } from '@certificates/infra/repositories/certificate.repository';
 import { InMemoryDatabaseAdapter } from '@/core/infra/adapters/in-memory-database.adapter';
 

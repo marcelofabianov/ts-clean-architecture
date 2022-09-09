@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es2017",
-        "module": "es2017",
+        "target": "es2020",
+        "module": "es2020",
         "strict": true,
         "esModuleInterop": true,
         "strictNullChecks":  true,
@@ -14,14 +14,11 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "inlineSourceMap": true,
+        "strictPropertyInitialization": false,
         "pretty": true,
         "paths": {
-            "@/*": ["*"]
-        },
-        "exclude": [
-            "node_modules",
-            "!node_modules/@types",
-            "./dist"
-        ]
+            "@/*": ["*"],
+            "@certificates/*": ["modules/customers/certificates/*"],
+        }
     }
 }

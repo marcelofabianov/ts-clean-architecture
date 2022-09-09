@@ -1,10 +1,10 @@
-import Id from '@/shared/value-objects/Id.vo';
+import { Id } from '@/shared/value-objects/id.vo';
 
 export abstract class Entity<T> {
   protected readonly _id: Id;
   public readonly props: T;
 
-  constructor(props: T, id?: Id) {
+  protected constructor(props: T, id?: Id) {
     this._id = id ? id : Id.create();
     this.props = props;
   }

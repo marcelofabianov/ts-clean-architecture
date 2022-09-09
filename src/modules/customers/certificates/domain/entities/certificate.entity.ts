@@ -1,20 +1,23 @@
-import { CreateCertificateDto } from '@certificates/domain/dtos/create-certificate.dto';
-import { Entity } from '@/core/domain/entity.core';
-import { Id } from '@/shared/value-objects/id.vo';
+import { Entity, IEntity } from '@/core/domain/entity.core';
 
-export class Certificate extends Entity<CreateCertificateDto> {
-  constructor(props: CreateCertificateDto, id?: Id) {
-    super(props, id);
-  }
-  get id(): string {
-    return this._id.value;
+export interface CertificateData extends IEntity {
+  password: string;
+  expiresIn: Date;
+}
+
+export class Certificate extends Entity<CertificateData> {
+  private _password: string;
+  private _expiresIn: Date;
+
+  constructor(data: CertificateData) {
+    super(data);
   }
 
   get password(): string {
-    return this.props.password;
+    return this._password;
   }
 
   get expiresIn(): Date {
-    return this.props.expiresIn;
+    return this._expiresIn;
   }
 }
